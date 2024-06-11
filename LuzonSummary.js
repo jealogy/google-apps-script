@@ -7,122 +7,66 @@ function isRedText(richTextValue, columnIndex) {
 
 function LuzonSummary() {
   var spreadsheet = SpreadsheetApp.getActive();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('NORTH LUZON - ALAND'), true);
-  var sheet = spreadsheet.getActiveSheet();
-  sheet.getRange(spreadsheet.getCurrentCell().getRow() + 2, 1, 3441, sheet.getMaxColumns()).activate();
-  spreadsheet.getActiveRange().createFilter();
-  spreadsheet.getCurrentCell().offset(0, 14).activate();
-  var criteria = SpreadsheetApp.newFilterCriteria()
-  .setHiddenValues(['Bounced', 'Deposited-Manual', 'Deposited-RCD', 'For Warehousing', 'Rejected - Treasury', 'Rejected - UBP', 'Warehoused-RCD'])
-  .build();
-  spreadsheet.getActiveSheet().getFilter().setColumnFilterCriteria(spreadsheet.getActiveRange().getColumn(), criteria);
-  spreadsheet.getCurrentCell().offset(0, -14, 1, 16).activate();
-  var currentCell = spreadsheet.getCurrentCell();
-  spreadsheet.getSelection().getNextDataRange(SpreadsheetApp.Direction.DOWN).activate();
-  currentCell.activateAsCurrentCell();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('Summary'), true);
-  spreadsheet.getCurrentCell().offset(4, 1).activate();
-  spreadsheet.getRange('\'NORTH LUZON - ALAND\'!A3:P3443').copyTo(spreadsheet.getActiveRange(), SpreadsheetApp.CopyPasteType.PASTE_NORMAL, false);
-  var summarySheet = spreadsheet.getSheetByName('Summary');
-  var lastRow = summarySheet.getLastRow();
-  summarySheet.getRange(lastRow + 1, 2).activate();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('SOUTH LUZON - ALAND'), true);
-  sheet = spreadsheet.getActiveSheet();
-  sheet.getRange(spreadsheet.getCurrentCell().getRow() + 2, 1, 793, sheet.getMaxColumns()).activate();
-  spreadsheet.getActiveRange().createFilter();
-  spreadsheet.getCurrentCell().offset(0, 14).activate();
-  criteria = SpreadsheetApp.newFilterCriteria()
-  .setHiddenValues(['', 'Bounced', 'Deposited-Manual', 'Deposited-RCD', 'For Warehousing', 'On Hold', 'Rejected - UBP', 'Warehoused-RCD'])
-  .build();
-  spreadsheet.getActiveSheet().getFilter().setColumnFilterCriteria(spreadsheet.getActiveRange().getColumn(), criteria);
-  spreadsheet.getCurrentCell().offset(59, -14, 1, 16).activate();
-  currentCell = spreadsheet.getCurrentCell();
-  spreadsheet.getSelection().getNextDataRange(SpreadsheetApp.Direction.DOWN).activate();
-  currentCell.activateAsCurrentCell();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('Summary'), true);
-  spreadsheet.getRange('\'SOUTH LUZON - ALAND\'!A62:P502').copyTo(spreadsheet.getActiveRange(), SpreadsheetApp.CopyPasteType.PASTE_NORMAL, false);
-  var summarySheet = spreadsheet.getSheetByName('Summary');
-  var lastRow = summarySheet.getLastRow();
-  summarySheet.getRange(lastRow + 1, 2).activate();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('SOUTH LUZON - LIMA'), true);
-  sheet = spreadsheet.getActiveSheet();
-  sheet.getRange(spreadsheet.getCurrentCell().getRow() + 2, 1, 1222, sheet.getMaxColumns()).activate();
-  spreadsheet.getActiveRange().createFilter();
-  spreadsheet.getCurrentCell().offset(0, 14).activate();
-  criteria = SpreadsheetApp.newFilterCriteria()
-  .build();
-  spreadsheet.getActiveSheet().getFilter().setColumnFilterCriteria(spreadsheet.getActiveRange().getColumn(), criteria);
-  criteria = SpreadsheetApp.newFilterCriteria()
-  .setHiddenValues(['', 'Bounced', 'Deposited-Manual', 'Deposited-RCD', 'For RCD Deposit', 'For Warehousing', 'Rejected - Treasury', 'Rejected - UBP', 'Warehoused-RCD'])
-  .build();
-  spreadsheet.getActiveSheet().getFilter().setColumnFilterCriteria(spreadsheet.getActiveRange().getColumn(), criteria);
-  spreadsheet.getCurrentCell().offset(153, -14, 1, 16).activate();
-  currentCell = spreadsheet.getCurrentCell();
-  spreadsheet.getSelection().getNextDataRange(SpreadsheetApp.Direction.DOWN).activate();
-  currentCell.activateAsCurrentCell();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('Summary'), true);
-  spreadsheet.getRange('\'SOUTH LUZON - LIMA\'!A156:P1037').copyTo(spreadsheet.getActiveRange(), SpreadsheetApp.CopyPasteType.PASTE_NORMAL, false);
-  var summarySheet = spreadsheet.getSheetByName('Summary');
-  var lastRow = summarySheet.getLastRow();
-  summarySheet.getRange(lastRow + 1, 2).activate();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('LUZON - ALAND'), true);
-  sheet = spreadsheet.getActiveSheet();
-  sheet.getRange(spreadsheet.getCurrentCell().getRow() + 2, 1, 3876, sheet.getMaxColumns()).activate();
-  spreadsheet.getActiveRange().createFilter();
-  spreadsheet.getCurrentCell().offset(0, 14).activate();
-  criteria = SpreadsheetApp.newFilterCriteria()
-  .setHiddenValues(['Bounced', 'Deposited-Manual', 'Deposited-RCD', 'Deposited-Warehouse', 'For Manual Deposit', 'For Warehousing', 'HOLD', 'On Hold', 'Rejected - Treasury', 'Rejected - UBP', 'Warehoused-RCD', 'Warehoused-UBP'])
-  .build();
-  spreadsheet.getActiveSheet().getFilter().setColumnFilterCriteria(spreadsheet.getActiveRange().getColumn(), criteria);
-  spreadsheet.getCurrentCell().offset(27, -14, 1, 16).activate();
-  currentCell = spreadsheet.getCurrentCell();
-  spreadsheet.getSelection().getNextDataRange(SpreadsheetApp.Direction.DOWN).activate();
-  currentCell.activateAsCurrentCell();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('Summary'), true);
-  spreadsheet.getRange('\'LUZON - ALAND\'!A30:P3181').copyTo(spreadsheet.getActiveRange(), SpreadsheetApp.CopyPasteType.PASTE_NORMAL, false);
-  var summarySheet = spreadsheet.getSheetByName('Summary');
-  var lastRow = summarySheet.getLastRow();
-  summarySheet.getRange(lastRow + 1, 2).activate();
-  spreadsheet.getActiveSheet().insertRowsAfter(spreadsheet.getActiveSheet().getMaxRows(), 1000);
-  var lastRow = summarySheet.getLastRow();
-  summarySheet.getRange(lastRow + 1, 2).activate();
-  spreadsheet.getCurrentCell().getNextDataCell(SpreadsheetApp.Direction.UP).activate();
-  spreadsheet.getCurrentCell().offset(1, 0).activate();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('LUZON - LIMA/CIPDI'), true);
-  sheet = spreadsheet.getActiveSheet();
-  sheet.getRange(spreadsheet.getCurrentCell().getRow() + 1, 1, 1087, sheet.getMaxColumns()).activate();
-  spreadsheet.getActiveRange().createFilter();
-  spreadsheet.getCurrentCell().offset(0, 14).activate();
-  criteria = SpreadsheetApp.newFilterCriteria()
-  .setHiddenValues(['Bounced', 'Deposited-Manual', 'Deposited-RCD', 'Deposited-Warehouse', 'On Hold', 'Rejected - UBP', 'Warehoused-RCD', 'Warehoused-UBP'])
-  .build();
-  spreadsheet.getActiveSheet().getFilter().setColumnFilterCriteria(spreadsheet.getActiveRange().getColumn(), criteria);
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('SOUTH LUZON - LIMA'), true);
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('CEBU - ALAND'), true);
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('LUZON - LIMA/CIPDI'), true);
-  spreadsheet.getCurrentCell().offset(5, -14, 1, 16).activate();
-  currentCell = spreadsheet.getCurrentCell();
-  spreadsheet.getSelection().getNextDataRange(SpreadsheetApp.Direction.DOWN).activate();
-  currentCell.activateAsCurrentCell();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('Summary'), true);
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('Summary'), true);
-  spreadsheet.getRange('\'LUZON - LIMA/CIPDI\'!A7:P1084').copyTo(spreadsheet.getActiveRange(), SpreadsheetApp.CopyPasteType.PASTE_NORMAL, false);
-  var summarySheet = spreadsheet.getSheetByName('Summary');
-  var lastRow = summarySheet.getLastRow();
-  summarySheet.getRange(lastRow + 1, 2).activate();
-  var spreadsheet = SpreadsheetApp.getActive();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('NORTH LUZON - ALAND'), true);
-  var sheet = spreadsheet.getActiveSheet();
-  sheet.getRange(spreadsheet.getCurrentCell().getRow(), 1, 1, sheet.getMaxColumns()).activate();
-  spreadsheet.getActiveSheet().getFilter().remove();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('SOUTH LUZON - ALAND'), true);
-  spreadsheet.getActiveSheet().getFilter().remove();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('SOUTH LUZON - LIMA'), true);
-  spreadsheet.getActiveSheet().getFilter().remove();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('LUZON - ALAND'), true);
-  spreadsheet.getActiveSheet().getFilter().remove();
-  spreadsheet.setActiveSheet(spreadsheet.getSheetByName('LUZON - LIMA/CIPDI'), true);
-  spreadsheet.getActiveSheet().getFilter().remove();
+  var sheet, criteria, currentCell;
+  
+  try {
+    // Function to create filter and apply criteria
+    function applyFilterAndCopy(sourceSheetName, filterRangeStartRow, filterHiddenValues, copyRange) {
+      spreadsheet.setActiveSheet(spreadsheet.getSheetByName(sourceSheetName), true);
+      sheet = spreadsheet.getActiveSheet();
+      var range = sheet.getRange(filterRangeStartRow, 1, sheet.getLastRow() - filterRangeStartRow + 1, sheet.getMaxColumns());
+      range.activate();
+      spreadsheet.getActiveRange().createFilter();
+      spreadsheet.getCurrentCell().offset(0, 14).activate();
+      criteria = SpreadsheetApp.newFilterCriteria().setHiddenValues(filterHiddenValues).build();
+      var column = spreadsheet.getActiveRange().getColumn();
+      if (column >= 1) {
+        spreadsheet.getActiveSheet().getFilter().setColumnFilterCriteria(column, criteria);
+      }
+      spreadsheet.getCurrentCell().offset(0, -14, 1, 16).activate();
+      currentCell = spreadsheet.getCurrentCell();
+      spreadsheet.getSelection().getNextDataRange(SpreadsheetApp.Direction.DOWN).activate();
+      currentCell.activateAsCurrentCell();
+      spreadsheet.setActiveSheet(spreadsheet.getSheetByName('Pulled Out - Luzon'), true);
+      spreadsheet.getRange(copyRange).copyTo(spreadsheet.getActiveRange(), SpreadsheetApp.CopyPasteType.PASTE_NORMAL, false);
+      var summarySheet = spreadsheet.getSheetByName('Pulled Out - Luzon');
+      var lastRow = summarySheet.getLastRow();
+      summarySheet.getRange(lastRow + 1, 2).activate();
+    }
+
+    // NORTH LUZON - ALAND
+    applyFilterAndCopy('NORTH LUZON - ALAND', 3, ['Bounced', 'Deposited-Manual', 'Deposited-RCD', 'For Warehousing', 'Rejected - Treasury', 'Rejected - UBP', 'Warehoused-RCD'], '\'NORTH LUZON - ALAND\'!A3:P3443');
+
+    // SOUTH LUZON - ALAND
+    applyFilterAndCopy('SOUTH LUZON - ALAND', 3, ['Bounced', 'Deposited-Manual', 'Deposited-RCD', 'For Warehousing', 'On Hold', 'Rejected - UBP', 'Warehoused-RCD'], '\'SOUTH LUZON - ALAND\'!A62:P502');
+
+    // SOUTH LUZON - LIMA
+    applyFilterAndCopy('SOUTH LUZON - LIMA', 3, ['Bounced', 'Deposited-Manual', 'Deposited-RCD', 'For RCD Deposit', 'For Warehousing', 'Rejected - Treasury', 'Rejected - UBP', 'Warehoused-RCD'], '\'SOUTH LUZON - LIMA\'!A156:P1037');
+
+    // LUZON - ALAND
+    applyFilterAndCopy('LUZON - ALAND', 3, ['Bounced', 'Deposited-Manual', 'Deposited-RCD', 'Deposited-Warehouse', 'For Manual Deposit', 'For Warehousing', 'HOLD', 'On Hold', 'Rejected - Treasury', 'Rejected - UBP', 'Warehoused-RCD', 'Warehoused-UBP'], '\'LUZON - ALAND\'!A30:P3181');
+
+    // LUZON - LIMA/CIPDI
+    applyFilterAndCopy('LUZON - LIMA/CIPDI', 3, ['Bounced', 'Deposited-Manual', 'Deposited-RCD', 'Deposited-Warehouse', 'On Hold', 'Rejected - UBP', 'Warehoused-RCD', 'Warehoused-UBP'], '\'LUZON - LIMA/CIPDI\'!A7:P1084');
+
+    // Remove filters
+    function removeFilters(sheetName) {
+      spreadsheet.setActiveSheet(spreadsheet.getSheetByName(sheetName), true);
+      sheet = spreadsheet.getActiveSheet();
+      var filter = sheet.getFilter();
+      if (filter) {
+        filter.remove();
+      }
+    }
+
+    removeFilters('NORTH LUZON - ALAND');
+    removeFilters('SOUTH LUZON - ALAND');
+    removeFilters('SOUTH LUZON - LIMA');
+    removeFilters('LUZON - ALAND');
+    removeFilters('LUZON - LIMA/CIPDI');
+  } catch (e) {
+    Logger.log('Error: ' + e.message);
+  }
 }
 
 function filterAndCopyToBounced(sourceSheetName, sourceSpreadsheetId) {
@@ -169,6 +113,3 @@ function processBothTabs() {
 }
 
 processBothTabs();
-
-
-
